@@ -20,8 +20,8 @@ load_time_dimension_table >> run_quality_checks  <br />
 ### Stage 0 (prepare):
 Run create_tables.sql on AWS redshift or create a separate airflow dag to create tables
 ### Stage 1:
--- Load event logs JSON files to redshift staging table staging_event
--- Load song JSON files to redshfit staging table staging_song
+Load event logs JSON files to redshift staging table staging_event <br />
+Load song JSON files to redshfit staging table staging_song
 ### Stage 2:
 Create Fact table songplays
 ### Stage 3:
