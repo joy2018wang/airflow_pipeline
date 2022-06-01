@@ -1,4 +1,4 @@
-
+create_tables_sql = """
 DROP TABLE IF EXISTS staging_events;
 DROP TABLE IF EXISTS staging_songs;
 DROP TABLE IF EXISTS songplays;
@@ -90,3 +90,4 @@ CREATE TABLE public.users (
 	"level" varchar(256),
 	CONSTRAINT users_pkey PRIMARY KEY (userid)
 );
+"""

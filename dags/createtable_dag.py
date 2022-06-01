@@ -2,13 +2,7 @@ from datetime import datetime, timedelta
 import os
 from airflow import DAG
 from airflow.operators.postgres_operator import PostgresOperator
-# from airflow.operators import (StageToRedshiftOperator, LoadFactOperator,
-#                                 LoadDimensionOperator, DataQualityOperator)
-from operators.stage_redshift import StageToRedshiftOperator
-from operators.load_fact import LoadFactOperator
-from operators.load_dimension import LoadDimensionOperator
-from operators.data_quality import DataQualityOperator
-from helpers import SqlQueries
+from helpers.sql_create_table_queries import create_tables_sql
 
 # AWS_KEY = os.environ.get('AWS_KEY')
 # AWS_SECRET = os.environ.get('AWS_SECRET')
@@ -33,6 +27,7 @@ default_args = {
 dag = DAG('createtable_dag',
           default_args=default_args,
           description='create table for the first time run',
+          schedule_interval=None
         )
 
 
@@ -40,7 +35,7 @@ create_table = PostgresOperator(
     task_id="create_table",
     dag=dag,
     postgres_conn_id="redshift",
-    sql='create_tables.sql'
+    sql=create_tables_sql
 )
 
 
